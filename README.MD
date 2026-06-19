@@ -29,7 +29,7 @@ O foco principal deste trabalho foi a transposição de dados reais do portal **
 ## 🔍 Pesquisa e Dados (ZeroZero)
 A base de dados deste projeto foi populada com informações reais extraídas do [ZeroZero.pt](https://www.zerozero.pt). A pesquisa focou-se em:
 - **Clubes**: Nome oficial, estádio e país de origem.
-- **Jogadores**: Nome completo, idade, posição tática e número de atleta.
+- **Jogadores**: Nome, idade, posição  e número.
 
 A transposição destes dados exigiu um cuidado especial na normalização, garantindo que cada jogador estivesse corretamente associado ao seu respetivo clube através de chaves estrangeiras (`id_clube`).
 
