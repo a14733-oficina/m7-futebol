@@ -92,7 +92,7 @@ m7/
 │── script.js
 │── clube_rows.sql
 │── jogador_rows.sql
-│── if0_40156192_futebol_bd.sql.txt
+│── if0_40156192_futebol_bd.sql
 ```
 
 ---
