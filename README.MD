@@ -1,7 +1,5 @@
 # ⚽ Gestão de Futebol - Sistema de Inventário de Jogadores e Clubes
 
-Site-->https://a14733-oficina.infinityfree.me/m7_futebol/index.php
-
 Este projeto consiste numa aplicação web desenvolvida em **PHP** para a gestão de uma base de dados de futebol. O sistema permite listar, adicionar, editar e remover jogadores, bem como filtrar a informação por clubes e países.
 
 O foco principal deste trabalho foi a transposição de dados reais do portal **ZeroZero** para uma estrutura de base de dados relacional, garantindo a integridade e a correta visualização da informação.
