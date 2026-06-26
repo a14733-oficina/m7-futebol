@@ -1,94 +1,106 @@
-# ⚽ Gestão de Futebol - Sistema de Inventário de Jogadores e Clubes
+# ⚽ Gestor de Clubes e Jogadores
 
-Site->https://a14733-oficina.infinityfree.me/m7_futebol/index.php
-
-Este projeto consiste numa aplicação web desenvolvida em **PHP** para a gestão de uma base de dados de futebol. O sistema permite listar, adicionar, editar e remover jogadores, bem como filtrar a informação por clubes e países.
-
-O foco principal deste trabalho foi a transposição de dados reais do portal **ZeroZero** para uma estrutura de base de dados relacional, garantindo a integridade e a correta visualização da informação.
+Este projeto consiste numa aplicação web desenvolvida em **HTML, CSS e JavaScript**, utilizando **Supabase** como base de dados. O sistema permite gerir jogadores e clubes através de uma interface simples e intuitiva, possibilitando adicionar, editar, visualizar e remover jogadores.
 
 ---
 
-## 📋 Índice
-- [Objetivos](#-objetivos)
-- [Pesquisa e Dados (ZeroZero)](#-pesquisa-e-dados-zerozero)
-- [Estrutura da Base de Dados](#-estrutura-da-base-de-dados)
-- [Funcionalidades](#-funcionalidades)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
-- [Instalação e Configuração](#-instalação-e-configuração)
+# 📋 Índice
+
+* Objetivos
+* Estrutura da Base de Dados
+* Funcionalidades
+* Tecnologias Utilizadas
+* Instalação e Configuração
 
 ---
 
-## 🎯 Objetivos
-- Desenvolver uma aplicação CRUD (Create, Read, Update, Delete) funcional.
-- Implementar uma ligação segura à base de dados utilizando **PDO (PHP Data Objects)**.
-- Organizar a informação de forma intuitiva, permitindo filtros avançados por clube e nacionalidade.
-- Garantir que a interface seja responsiva e amigável para o utilizador.
+# 🎯 Objetivos
+
+* Desenvolver uma aplicação CRUD (Create, Read, Update e Delete).
+* Criar uma interface simples e responsiva para gestão de jogadores.
+* Integrar uma base de dados remota através do Supabase.
+* Facilitar a organização da informação dos clubes e respetivos jogadores.
 
 ---
 
-## 🔍 Pesquisa e Dados (ZeroZero)
-A base de dados deste projeto foi populada com informações reais extraídas do [ZeroZero.pt](https://www.zerozero.pt). A pesquisa focou-se em:
-- **Clubes**: Nome oficial, estádio e país de origem.
-- **Jogadores**: Nome, idade, posição  e número.
+# 🗄️ Estrutura da Base de Dados
 
-A transposição destes dados exigiu um cuidado especial na normalização, garantindo que cada jogador estivesse corretamente associado ao seu respetivo clube através de chaves estrangeiras (`id_clube`).
+A aplicação utiliza duas tabelas relacionadas.
 
----
+## Tabela `Clube`
 
-## 🗄️ Estrutura da Base de Dados
-A base de dados `if0_40156192_inventario` é composta por duas tabelas principais relacionadas:
+| Coluna    | Tipo     | Descrição              |
+| :-------- | :------- | :--------------------- |
+| id_clube  | INT (PK) | Identificador do clube |
+| nomeclube | VARCHAR  | Nome do clube          |
+| pais      | VARCHAR  | País do clube          |
 
-### Tabela `Clube`
-| Coluna | Tipo | Descrição |
-| :--- | :--- | :--- |
-| `id_clube` | INT (PK) | Identificador único do clube |
-| `nomeclube` | VARCHAR | Nome oficial do clube |
-| `estadio` | VARCHAR | Nome do estádio principal |
-| `pais` | VARCHAR | País de origem do clube |
+## Tabela `Jogador`
 
-### Tabela `Jogador`
-| Coluna | Tipo | Descrição |
-| :--- | :--- | :--- |
-| `id_jogador` | INT (PK) | Identificador único do jogador |
-| `NumAtleta` | INT | Número oficial do atleta |
-| `NomeJogador` | VARCHAR | Nome completo do jogador |
-| `Idade` | INT | Idade do atleta |
-| `Posicao` | VARCHAR | Posição (ex: GR, DC, MC, PL) |
-| `id_clube` | INT (FK) | Ligação à tabela Clube |
+| Coluna      | Tipo     | Descrição                |
+| :---------- | :------- | :----------------------- |
+| id_jogador  | INT (PK) | Identificador do jogador |
+| NomeJogador | VARCHAR  | Nome do jogador          |
+| Pais        | VARCHAR  | Nacionalidade            |
+| Idade       | INT      | Idade                    |
+| Posicao     | VARCHAR  | Posição em campo         |
+| id_clube    | INT (FK) | Clube ao qual pertence   |
 
 ---
 
-## 🚀 Funcionalidades
-- **Página Inicial**: Visão geral e menu de navegação.
-- **Listagem Geral**: Visualização de todos os jogadores com indicação do clube atual.
-- **Gestão de Jogadores**:
-  - Adicionar novos atletas com validação de dados.
-  - Atualizar informações de jogadores existentes.
-  - Remover registos com confirmação de segurança.
-- **Filtros Especializados**:
-  - **Por Clube**: Lista jogadores de um clube específico, destacando o nome do estádio.
-  - **Por País**: Agrupa a informação com base na nacionalidade dos clubes.
+# 🚀 Funcionalidades
+
+* Página principal com listagem de clubes e jogadores.
+* Adicionar novos jogadores.
+* Editar informações dos jogadores através de uma janela modal.
+* Eliminar jogadores da base de dados.
+* Atualização automática da informação apresentada.
+* Interface organizada para facilitar a gestão dos dados.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-- **Frontend**: HTML5, CSS3 (estilização personalizada).
-- **Backend**: PHP 8.x.
-- **Base de Dados**: MySQL / MariaDB.
-- **Segurança**: Utilização de `Prepared Statements` (PDO) para prevenir ataques de SQL Injection e `htmlspecialchars` para evitar XSS.
+# 🛠️ Tecnologias Utilizadas
+
+* **Frontend:** HTML5, CSS3 e JavaScript.
+* **Base de Dados:** Supabase (PostgreSQL).
+* **Biblioteca:** Supabase JavaScript SDK.
 
 ---
 
-## ⚙️ Instalação e Configuração
-1. Importe o ficheiro SQL para o seu servidor MySQL.
-2. Configure as credenciais de acesso no ficheiro `db.php`:
-   ```php
-   $host = "seu_host";
-   $dbname = "seu_nome_bd";
-   $user = "seu_utilizador";
-   $pass = "sua_senha";
-   ```
-3. Certifique-se de que todos os ficheiros (`header.php`, `footer.php`, etc.) estão na mesma diretoria.
+# ⚙️ Instalação e Configuração
+
+1. Faça download do projeto.
+2. Crie um projeto no Supabase.
+3. Importe os ficheiros SQL fornecidos:
+
+   * `clube_rows.sql`
+   * `jogador_rows.sql`
+4. Configure no ficheiro `script.js`:
+
+   * URL do projeto Supabase.
+   * Chave pública (Anon Key).
+5. Abra o ficheiro `index.html` no navegador ou publique-o num servidor web.
 
 ---
-*Trabalho realizado no âmbito do módulo de Gestão de Bases de Dados.*
+
+# 📂 Estrutura do Projeto
+
+```text
+m7/
+│── index.html
+│── style.css
+│── script.js
+│── clube_rows.sql
+│── jogador_rows.sql
+│── if0_40156192_futebol_bd.sql.txt
+```
+
+---
+
+# 📖 Descrição
+
+Esta aplicação permite gerir uma pequena base de dados de futebol de forma simples e rápida. Através da integração com o Supabase, todas as operações de inserção, edição, consulta e eliminação são realizadas em tempo real, permitindo uma gestão eficiente dos jogadores e respetivos clubes.
+
+---
+
+*Trabalho realizado no âmbito do módulo de Redes e Bases de Dados.*
